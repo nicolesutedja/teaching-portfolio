@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teaching Programming Portfolio | Nicole Sutedja</title>
+    
+    <!-- Import Modern Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Base Styling */
+        body { 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.7; 
+            margin: 0; 
+            padding: 0; 
+            color: #334155; /* Slate text */
+            background-color: #F8FAFC; /* Very light slate background */
+        }
+        
+        /* Gradient Header */
+        header { 
+            background: linear-gradient(135deg, #b14419 0%, #9331bd 100%);
+            color: #ffffff; 
+            padding: 5rem 1.5rem; 
+            text-align: center; 
+        }
+        header h1 { 
+            font-family: 'Poppins', sans-serif;
+            margin: 0 0 0.5rem 0; 
+            font-size: 3rem; 
+            letter-spacing: -0.05rem;
+        }
+        header p {
+            font-size: 1.15rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        /* Glassmorphism Sticky Navigation */
+        nav { 
+            background: rgba(255, 255, 255, 0.7); 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            display: flex; 
+            justify-content: center; 
+            padding: 1rem; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+        nav a { 
+            color: #475569; 
+            text-decoration: none; 
+            margin: 0 1.5rem; 
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600; 
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+        nav a:hover { color: #a11ab0; }
+
+        /* Container and Sections */
+        .container { 
+            width: 90%; 
+            max-width: 1000px; 
+            margin: 3rem auto; 
+        }
+        .section { 
+            background: #ffffff; 
+            padding: 3rem; 
+            margin-bottom: 3rem; 
+            border-radius: 0; /* Remove rounded corners */
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); 
+        }
+        h2 { 
+            font-family: 'Poppins', sans-serif;
+            color: #0f172a; 
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+        /* Custom underline for headings */
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 4px;
+            width: 60px;
+            background: #a11ab0;
+            border-radius: 2px;
+        }
+        
+        /* Modern Grid Layout for Projects */
+        .project-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 2rem; 
+            margin-top: 2rem;
+        }
+        .project-card { 
+            background: #ffffff; 
+            border: 1px solid #e2e8f0; 
+            padding: 2rem; 
+            border-radius: 0; /* Remove rounded corners */
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        /* Hover lift effect */
+        .project-card:hover { 
+            transform: translateY(-6px); 
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); 
+            border-color: #cbd5e1;
+        }
+        .project-card h3 { 
+            font-family: 'Poppins', sans-serif;
+            margin-top: 0; 
+            color: #1e293b; 
+            font-size: 1.25rem;
+        }
+        .project-card p {
+            color: #64748b;
+            flex-grow: 1; /* Pushes the link to the bottom evenly */
+        }
+        
+        /* Stylized Action Links */
+        .project-card a, .contact-link { 
+            display: inline-flex; 
+            align-items: center;
+            margin-top: 1.5rem; 
+            color: #a11ab0; 
+            text-decoration: none; 
+            font-weight: 600;
+            transition: gap 0.3s ease;
+            gap: 4px; /* Space between text and arrow */
+        }
+        .project-card a:hover { gap: 10px; /* Slides the arrow to the right */ }
+        .contact-link { margin-top: 0; margin-right: 1.5rem; }
+
+        /* Footer */
+        footer { 
+            background: #320e38; 
+            color: #ab94b8; 
+            text-align: center; 
+            padding: 2rem; 
+            margin-top: 4rem; 
+            font-size: 0.9rem;
+        }
+
+        /* Responsive layout for the About section */
+        .about-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+            text-align: center;
+        }
+
+        .about-container img {
+            width: 100%;
+            max-width: 250px; /* Compact picture on mobile */
+            height: auto;
+            border: 1px solid #e2e8f0; /* Basic square frame */
+        }
+
+        /* Large screen side-by-side layout for About section */
+        @media (min-width: 768px) {
+            .about-container {
+                display: grid;
+                grid-template-columns: 1fr 3fr; /* Text gets more space */
+                gap: 2.5rem;
+                align-items: start;
+                text-align: left;
+            }
+            .about-container img {
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Nicole Sutedja</h1>
+    <p>Computer Science at UC San Diego | Teaching Programming Portfolio</p>
+</header>
+
+<nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<div class="container">
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <div class="about-container">
+            <img src="/nicole.jpg" alt="Nicole Sutedja" class="profile-pic">
+            <div class="about-text">
+                <p>Welcome to my Teaching Programming Portfolio! I am a Computer Science student passionate about computing education, technology access, and building intuitive user experiences. This portfolio showcases my coursework, curriculum designs, and interactive programming projects.</p>
+                <p>Whether I am evaluating AI models, developing product requirements, or explaining technical concepts, my goal is to make computing approachable and engaging.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2>Projects & Course Materials</h2>
+        <p>Below are examples of my instructional videos, interactive Snap!/Scratch projects, and collaborative lesson plans.</p>
+
+        <div class="project-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <h3>Project 1</h3>
+                <p>Coming soon...</p>
+                <a href="LINK_TO_YOUR_VIDEO_OR_SLIDES" target="_blank">View Materials &rarr;</a>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <h3>Project 2</h3>
+                <p>Coming soon...</p>
+                <a href="LINK_TO_YOUR_SCRATCH_PROJECT" target="_blank">Play the Game &rarr;</a>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+                <h3>Project 3</h3>
+                <p>Coming soon...</p>
+                <a href="LINK_TO_YOUR_DOC" target="_blank">View Lesson Plan &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2>Contact</h2>
+        <p>I am always looking for opportunities to discuss computing education, product management, and software development.</p>
+        <div style="margin-top: 1.5rem;">
+            <a href="mailto:nsutedja@ucsd.edu" class="contact-link">Email Me &rarr;</a>  
+            <a href="https://www.linkedin.com/in/nicolesutedja" class="contact-link">LinkedIn &rarr;</a> 
+            <a href="https://github.com/nicolesutedja" class="contact-link">GitHub &rarr;</a>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; Fall 2026. Built for EDS 124BR.</p>
+</footer>
+
+</body>
+</html>
